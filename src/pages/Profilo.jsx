@@ -4,7 +4,7 @@ import {
     apiCreateProfilo,
     apiGetProfilo,
     apiUpdateProfilo,
-} from "../api/BeApi";
+} from "../api/beApi";
 import AuthContext from "../auth/AuthContext";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
