@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { apiLogin } from "../api/api";
+import { apiLogin } from "../api/beApi";
 import AuthContext from "../auth/AuthContext";
 import Header from "../components/Header";
 import { AlertContext } from "../context/AlertContext";
