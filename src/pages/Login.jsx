@@ -80,7 +80,7 @@ const Login = () => {
                             IMPORTANTE: Il backend è in esecuzione su un server
                             gratuito la cui istanza và in standby dopo 15 minuti
                             di inattività. Pertanto SOLO per la prima chiamata
-                            potrebbero volerci poco più di 50 secondi per
+                            potrebbero volerci un paio di minuti per
                             ritornare operativo.
                         </p>
                         <p className="text-sm text-blue-800"></p>
