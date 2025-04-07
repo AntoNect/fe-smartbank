@@ -53,7 +53,40 @@ const Login = () => {
     };
 
     return (
-        <div className="flex min-h-screen items-center justify-center px-6 py-12 lg:px-8 relative">
+        <div className="flex min-h-screen flex-col items-center justify-center px-6 py-12 lg:px-8 relative">
+            <div className="fixed top-0 left-0 w-full bg-blue-50 border border-blue-200">
+                <div className="container mx-auto px-4 py-3 flex items-center">
+                    <div className="flex-shrink-0">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            className="h-6 w-6 text-blue-600"
+                        >
+                            <path
+                                fillRule="evenodd"
+                                d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-7-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM9 9a.75.75 0 0 0 0 1.5h.253a.25.25 0 0 1 .244.304l-.459 2.066A1.75 1.75 0 0 0 10.747 15H11a.75.75 0 0 0 0-1.5h-.253a.25.25 0 0 1-.244-.304l.459-2.066A1.75 1.75 0 0 0 9.253 9H9Z"
+                                clipRule="evenodd"
+                            />
+                        </svg>
+                    </div>
+                    <div className="ml-3">
+                        <p className="text-sm text-blue-800">
+                            Project Work UniPegaso - De Filippis Antonio Pio -
+                            Matr: 0312300708
+                        </p>
+                        <p className="text-sm text-blue-800 font-bold">
+                            IMPORTANTE: Il backend è in esecuzione su un server
+                            gratuito la cui istanza và in standby dopo 15 minuti
+                            di inattività. Pertanto SOLO per la prima chiamata
+                            potrebbero volerci poco più di 50 secondi per
+                            ritornare operativo.
+                        </p>
+                        <p className="text-sm text-blue-800"></p>
+                    </div>
+                </div>
+            </div>
             <div className="w-full max-w-md">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                     <img
