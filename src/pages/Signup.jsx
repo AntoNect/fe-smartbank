@@ -30,7 +30,31 @@ const Signup = () => {
         e.preventDefault();
         clearAlert();
 
-        if (formData.password != formData.rePasssord) {
+        // Verifico che l'username contenga spazi
+        if (/\s/.test(formData.username)) {
+            showAlert("L'username non deve contenere spazi", true);
+            return;
+        }
+
+        // Verifico che l'username sia lunga almeno 5 caratteri
+        if (formData.username.length < 5) {
+            showAlert("L'username deve essere di almeno 5 caratteri", true);
+            return;
+        }
+
+        // Verifico che la password rispetti la regex
+        // Regex: Almeno 8 caratteri, una lettera maiuscola, una minuscola e un numero
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+        if (!passwordRegex.test(formData.password)) {
+            showAlert(
+                "La password deve contenere almeno 8 caratteri, una lettera maiuscola, una minuscola e un numero",
+                true
+            );
+            return;
+        }
+
+        // Controllo: Le due password devono coincidere
+        if (formData.password !== formData.rePasssord) {
             showAlert("Le due password non coincidono", true);
             return;
         }
@@ -42,7 +66,7 @@ const Signup = () => {
                 formData.username,
                 formData.password
             );
-            showAlert("Registrazione avvenuto con succcesso", false);
+            showAlert("Registrazione avvenuta con successo", false);
             setFormData({
                 email: "",
                 username: "",
