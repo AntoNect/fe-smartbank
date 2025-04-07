@@ -65,7 +65,7 @@ const Dashboard = () => {
                                     : "0.00"}
                                 €
                             </p>
-                            <div className="mt-6 flex space-x-4">
+                            <div className="mt-6 space-x-4 hidden">
                                 <button className="bg-indigo-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-indigo-500">
                                     Il tuo IBAN
                                 </button>
