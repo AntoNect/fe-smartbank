@@ -27,6 +27,7 @@ const Dashboard = () => {
                     setDashboardData(response.data);
                 }
             } catch (err) {
+                console.log(err);
                 if (err.response) showAlert(err.response.data, true);
                 else showAlert(err.message, true);
             } finally {
@@ -65,11 +66,14 @@ const Dashboard = () => {
                                     : "0.00"}
                                 €
                             </p>
-                            <div className="mt-6 space-x-4 hidden">
-                                <button className="bg-indigo-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-indigo-500">
-                                    Il tuo IBAN
-                                </button>
-                                <button className="bg-gray-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-gray-500">
+                            <div className="mt-12 space-x-4">
+                                <a
+                                    href="/profilo#coordinate-bancarie"
+                                    className="bg-gradient-to-r from-gray-700 to-gray-900 text-white px-4 py-2 cursor-pointer rounded-lg shadow-md"
+                                >
+                                    Coordinate bancarie
+                                </a>
+                                <button className="bg-gray-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-gray-500 hidden">
                                     La tua carta
                                 </button>
                             </div>

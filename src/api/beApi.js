@@ -35,9 +35,9 @@ export const apiSignup = async (email, username, password) => {
 /**
  * Ricevuto in ingresso il token JWT, effettua la chiamata GET al server
  * per recuperare le informazioni del profilo dell'utente loggato.
- * 
- * @param {*} token 
- * @returns 
+ *
+ * @param {*} token
+ * @returns
  */
 export const apiGetProfilo = async (token) => {
     const response = await axios.get(`${API_URL}/profilo`, {
@@ -48,9 +48,18 @@ export const apiGetProfilo = async (token) => {
     return response;
 };
 
+export const apiGetCoordinateBancarie = async (token) => {
+    const response = await axios.get(`${API_URL}/conto/coordinate-bancarie`, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    return response;
+};
+
 export const apiUpdateProfilo = async (
     telefono,
-    indirizzo,
+    indirizzoResidenza,
     idCittaResidenza,
     dataNascita,
     token
@@ -59,7 +68,7 @@ export const apiUpdateProfilo = async (
         `${API_URL}/profilo/update`,
         {
             telefono,
-            indirizzo,
+            indirizzoResidenza,
             idCittaResidenza,
             dataNascita,
         },

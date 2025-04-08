@@ -1,8 +1,10 @@
-import { useState } from "react";
-
 const Alert = ({ messaggio, isError = true, className = "" }) => {
-    if (messaggio === null) {
+    if (messaggio === null || messaggio === undefined || messaggio === "") {
         return null;
+    }
+
+    if (isError && messaggio == "Network Error") {
+        messaggio = "Sessione scaduta, effettua nuovamente il login";
     }
 
     return (

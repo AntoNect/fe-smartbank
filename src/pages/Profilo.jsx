@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
     apiCreateProfilo,
+    apiGetCoordinateBancarie,
     apiGetProfilo,
     apiUpdateProfilo,
 } from "../api/beApi";
@@ -24,6 +25,15 @@ const Profilo = () => {
         cittaResidenza: "",
         dataNascita: "",
     });
+    const [coordinateData, setCoordinateData] = useState({
+        iban: "",
+        codNazionale: "",
+        cinEuropeo: "",
+        cin: "",
+        abi: "",
+        cab: "",
+        numConto: "",
+    });
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -36,13 +46,18 @@ const Profilo = () => {
                     if (response && response.data) {
                         setFormData(response.data);
                     }
+                    const responseCoordinate = await apiGetCoordinateBancarie(
+                        token
+                    );
+                    if (responseCoordinate && responseCoordinate.data) {
+                        setCoordinateData(responseCoordinate.data);
+                    }
                 } catch (err) {
                     if (err.response) showAlert(err.response.data, true);
                     else showAlert(err.message, true);
                 } finally {
                     setLoading(false);
                 }
-            } else {
             }
         };
 
@@ -310,6 +325,85 @@ const Profilo = () => {
                                     </button>
                                 </div>
                             </form>
+
+                            {isContoAttivo && (
+                                <div className="bg-white shadow-md rounded-lg p-6 mt-8">
+                                    <h2 id="coordinate-bancarie" className="text-lg font-semibold text-gray-900 mb-4">
+                                        Coordinate Bancarie
+                                    </h2>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                        {/* IBAN */}
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700">
+                                                IBAN
+                                            </label>
+                                            <p className="mt-1 text-base text-gray-900">
+                                                {coordinateData.iban}
+                                            </p>
+                                        </div>
+
+                                        {/* Codice Nazionale */}
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700">
+                                                Codice Nazionale
+                                            </label>
+                                            <p className="mt-1 text-base text-gray-900">
+                                                {coordinateData.codNazionale}
+                                            </p>
+                                        </div>
+
+                                        {/* CIN Europeo */}
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700">
+                                                CIN Europeo
+                                            </label>
+                                            <p className="mt-1 text-base text-gray-900">
+                                                {coordinateData.cinEuropeo}
+                                            </p>
+                                        </div>
+
+                                        {/* CIN */}
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700">
+                                                CIN
+                                            </label>
+                                            <p className="mt-1 text-base text-gray-900">
+                                                {coordinateData.cin}
+                                            </p>
+                                        </div>
+
+                                        {/* ABI */}
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700">
+                                                ABI
+                                            </label>
+                                            <p className="mt-1 text-base text-gray-900">
+                                                {coordinateData.abi}
+                                            </p>
+                                        </div>
+
+                                        {/* CAB */}
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700">
+                                                CAB
+                                            </label>
+                                            <p className="mt-1 text-base text-gray-900">
+                                                {coordinateData.cab}
+                                            </p>
+                                        </div>
+
+                                        {/* Numero Conto */}
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700">
+                                                Numero Conto
+                                            </label>
+                                            <p className="mt-1 text-base text-gray-900">
+                                                {coordinateData.numConto}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>
